@@ -1,0 +1,19 @@
+:root { font-family: Inter, system-ui, sans-serif; color: #15232d; background: #f2f5f6; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+main { max-width: 880px; margin: 0 auto; min-height: 100vh; padding: 32px 20px; }
+header { display: flex; align-items: center; gap: 14px; }
+.mark { display: grid; place-items: center; width: 45px; height: 45px; background: #003b5c; color: white; font-weight: 800; font-size: 1.4rem; }
+h1 { margin: 0; font-size: 1.5rem; } header p { margin: 4px 0; color: #4a5d68; }
+.notice { margin: 24px 0; padding: 12px; border-left: 4px solid #56a0d3; background: #e6f1f7; font-size: .9rem; }
+.thread { min-height: 400px; padding: 20px; background: white; border: 1px solid #d6dfe3; }
+.empty { color: #61747d; text-align: center; margin-top: 160px; }
+article { max-width: 85%; margin-bottom: 18px; padding: 12px; border-radius: 3px; background: #eef3f5; }
+article.user { margin-left: auto; background: #003b5c; color: white; } article pre { margin: 8px 0 0; white-space: pre-wrap; font: inherit; } article a { display: inline-block; margin-top: 10px; color: inherit; font-weight: 700; }
+form { display: grid; gap: 10px; margin-top: 18px; } label { font-weight: 600; } select { margin-left: 8px; } textarea { resize: vertical; padding: 12px; border: 1px solid #aebfc7; font: inherit; } button { justify-self: end; padding: 10px 16px; border: 0; background: #003b5c; color: white; font-weight: 700; cursor: pointer; } button:disabled { opacity: .6; }
+
+.upload-section { margin-bottom: 24px; padding: 12px; background: white; border: 1px solid #d6dfe3; border-radius: 3px; }
+.upload-section summary { font-weight: 600; cursor: pointer; color: #003b5c; }
+.upload-form { display: flex; align-items: center; gap: 12px; margin-top: 12px; font-size: 0.9rem; }
+.upload-form button { margin-left: auto; justify-self: auto; }
+.upload-msg { font-size: 0.85rem; font-weight: 600; color: #56a0d3; }
