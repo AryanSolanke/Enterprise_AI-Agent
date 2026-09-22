@@ -35,7 +35,7 @@ class FormattingService:
                     raise FormattingError(f"JSON output failed the requested schema: {error.message}") from error
             return content, None
         if request.target_format == OutputFormat.XML:
-            root = Element("kueaResponse", generatedAt=datetime.now(UTC).isoformat())
+            root = Element("ueaaResponse", generatedAt=datetime.now(UTC).isoformat())
             for payload in payloads:
                 answer = SubElement(root, "answer", domain=payload.domain.value)
                 SubElement(answer, "text").text = payload.answer_text
@@ -51,7 +51,7 @@ class FormattingService:
             body = "\n\n".join(payload.answer_text for payload in payloads)
             return (
                 f"Subject: Requested information\n\nHello {recipient},\n\n{body}\n\n"
-                f"Regards,\nKohler Enterprise AI Agent\n\n"
+                f"Regards,\nEnterprise AI Agent\n\n"
                 f"AI-drafted ({tone}); please review before sending.",
                 None,
             )
@@ -85,7 +85,7 @@ class FormattingService:
         worksheet.freeze_panes = "A2"
         for column, width in {"A": 14, "B": 60, "C": 12, "D": 14, "E": 30, "F": 70}.items():
             worksheet.column_dimensions[column].width = width
-        filename = f"kuea-export-{uuid.uuid4().hex[:12]}.xlsx"
+        filename = f"ueaa-export-{uuid.uuid4().hex[:12]}.xlsx"
         workbook.save(self.artifact_dir / filename)
         return RenderedArtifact(
             filename=filename,

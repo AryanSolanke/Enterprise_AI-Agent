@@ -1,4 +1,4 @@
-"""Comprehensive integration tests for the KUEA system.
+"""Comprehensive integration tests for the UEAA system.
 
 Covers ingestion edge cases, guardrail PII redaction, all output formats,
 session memory, cache behavior, RBAC policy admin, multi-domain fan-out,
@@ -18,7 +18,7 @@ def test_health_check(client: TestClient) -> None:
     assert response.status_code == 200
     body = response.json()
     assert body["status"] == "ok"
-    assert body["service"] == "kuea-gateway"
+    assert body["service"] == "ueaa-gateway"
 
 
 # ── Authentication ──────────────────────────────────────────────────────────
@@ -219,7 +219,7 @@ def test_xml_output_format(client: TestClient) -> None:
     body = response.json()
     assert body["output_format"] == "xml"
     assert body["rendered_content"] is not None
-    assert "kueaResponse" in body["rendered_content"]
+    assert "ueaaResponse" in body["rendered_content"]
 
 
 def test_email_output_format(client: TestClient) -> None:
@@ -287,7 +287,7 @@ def test_json_schema_override_validation_failure(client: TestClient) -> None:
 def test_guardrail_pii_redaction_for_external_user(client: TestClient) -> None:
     ingest(
         client, "support", "Contact Info",
-        "# Contacts\nFor support call 555-123-4567 or email support@kohler.com for assistance."
+        "# Contacts\nFor support call 555-123-4567 or email support@enterprise.com for assistance."
     )
     response = client.post(
         "/chat",
@@ -296,7 +296,7 @@ def test_guardrail_pii_redaction_for_external_user(client: TestClient) -> None:
     )
     assert response.status_code == 200
     answer = response.json()["answer"]
-    assert "support@kohler.com" not in answer
+    assert "support@enterprise.com" not in answer
     assert "[redacted" in answer.lower()
 
 

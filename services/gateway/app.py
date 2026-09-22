@@ -60,7 +60,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         policies,
     )
 
-    app = FastAPI(title="Kohler Unified Enterprise AI Agent", version="0.1.0")
+    app = FastAPI(title="Unified Enterprise AI Agent", version="0.1.0")
 
     app.add_middleware(
         CORSMiddleware,
@@ -91,7 +91,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
                 status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
                 detail="Database connectivity check failed.",
             ) from err
-        return {"status": "ok", "service": "kuea-gateway"}
+        return {"status": "ok", "service": "ueaa-gateway"}
 
     @app.get("/auth/login")
     async def login(request: Request) -> Response:

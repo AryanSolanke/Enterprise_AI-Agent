@@ -1,4 +1,4 @@
-"""Shared test fixtures for KUEA integration tests."""
+"""Shared test fixtures for UEAA integration tests."""
 
 from __future__ import annotations
 
@@ -15,7 +15,7 @@ from services.shared.config import Settings
 def settings(tmp_path: Path) -> Settings:
     return Settings(
         app_env="test",
-        database_url=f"sqlite:///{tmp_path / 'kuea.db'}",
+        database_url=f"sqlite:///{tmp_path / 'ueaa.db'}",
         artifact_dir=tmp_path / "artifacts",
         session_token_secret="test-secret",
         oidc_issuer_url=None,

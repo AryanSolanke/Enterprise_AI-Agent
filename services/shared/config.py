@@ -24,7 +24,7 @@ class Settings:
     def from_env(cls) -> "Settings":
         return cls(
             app_env=os.getenv("APP_ENV", "development").lower(),
-            database_url=os.getenv("DATABASE_URL", "sqlite:///./data/kuea.db"),
+            database_url=os.getenv("DATABASE_URL", "sqlite:///./data/ueaa.db"),
             artifact_dir=Path(os.getenv("ARTIFACT_DIR", "./artifacts")),
             session_token_secret=os.getenv("SESSION_TOKEN_SECRET", "development-only-change-me"),
             oidc_issuer_url=os.getenv("OIDC_ISSUER_URL") or None,

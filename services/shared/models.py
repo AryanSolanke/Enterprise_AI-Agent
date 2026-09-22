@@ -1,4 +1,4 @@
-"""Stable, versioned contracts shared across every KUEA boundary."""
+"""Stable, versioned contracts shared across every UEAA boundary."""
 
 from __future__ import annotations
 

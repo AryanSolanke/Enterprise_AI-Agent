@@ -1,1 +1,1 @@
-"""KUEA service-boundary modules."""
+"""UEAA service-boundary modules."""

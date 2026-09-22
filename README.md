@@ -1,6 +1,6 @@
-# Kohler Unified Enterprise AI Agent
+# Unified Enterprise AI Agent
 
-KUEA is a runnable, local-first reference implementation of a secure, domain-partitioned enterprise knowledge agent. It keeps the key architectural boundaries from the design: retrieval is isolated by domain and authorized before search; agents return a stable `AnswerPayload`; guardrails run before rendering; and rendering is separate from answering.
+UEAA is a runnable, local-first reference implementation of a secure, domain-partitioned enterprise knowledge agent. It keeps the key architectural boundaries from the design: retrieval is isolated by domain and authorized before search; agents return a stable `AnswerPayload`; guardrails run before rendering; and rendering is separate from answering.
 
 ## Run locally
 
@@ -26,4 +26,5 @@ For local development, use the `X-Dev-User`, `X-Dev-Roles`, and `X-Dev-Domains` 
 
 The supplied plans leave the identity provider, production LLM/embedding provider, vector database, escalation system, source-system APIs, and cloud provider unspecified. This implementation deliberately does not invent live integrations. It provides a working local hybrid retrieval engine and secure OIDC configuration boundary; replacing the local repository with an approved vector/keyword provider belongs behind `services/retrieval/service.py` after those decisions are approved.
 
-See [the architecture validation](docs/architecture-validation.md) and [the deployment guide](docs/deployment.md) before a production rollout.
+See [the architecture validation](docs/architecture-validation.md) and [the deployment guide](do
+cs/deployment.md) before a production rollout.

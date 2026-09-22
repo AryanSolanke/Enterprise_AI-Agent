@@ -1,18 +1,18 @@
-# Kohler Unified Enterprise AI Agent — System Design Document
+# Unified Enterprise AI Agent — System Design Document
 
 ## 1. Overview
 
-Kohler operates across multiple internal and external domains — HR policy, financial guidelines, customer support, privacy, and legal/compliance — each governed by different owners, access rules, and update cadences. Today, employees and customers must navigate siloed portals, static PDFs, and ticketing queues to get answers, and any output they need (a spreadsheet, a formal email, a structured record) has to be manually reformatted after the fact.
+The enterprise operates across multiple internal and external domains — HR policy, financial guidelines, customer support, privacy, and legal/compliance — each governed by different owners, access rules, and update cadences. Today, employees and customers must navigate siloed portals, static PDFs, and ticketing queues to get answers, and any output they need (a spreadsheet, a formal email, a structured record) has to be manually reformatted after the fact.
 
-The **Kohler Unified Enterprise AI Agent (KUEA)** solves this by combining:
+The **Unified Enterprise AI Agent (UEAA)** solves this by combining:
 
 1. A **multi-domain retrieval backbone** that keeps each knowledge base logically and securely separated while presenting one conversational front door.
 2. An **orchestrating reasoning agent** that classifies intent, routes to the right domain expert(s), maintains multi-turn context, and decides when to combine cross-domain information.
 3. A **dynamic output-formatting layer** that turns the same underlying answer into JSON, XML, a downloadable Excel workbook, or a ready-to-send email draft — on demand, without re-asking the question.
 
-The design is built to satisfy the stated evaluation priorities in order of weight: **architectural/prompting innovation (45%)**, **execution robustness (25%)**, **UX and deployability (20%)**, and **alignment with Kohler's brand and operational values (10%)**.
+The design is built to satisfy the stated evaluation priorities in order of weight: **architectural/prompting innovation (45%)**, **execution robustness (25%)**, **UX and deployability (20%)**, and **alignment with the enterprise's brand and operational values (10%)**.
 
-**Scope:** This document covers system architecture, component functionality, data flow, security/governance, scalability, and risk mitigation. It assumes an enterprise deployment inside Kohler's existing identity, data, and cloud infrastructure.
+**Scope:** This document covers system architecture, component functionality, data flow, security/governance, scalability, and risk mitigation. It assumes an enterprise deployment inside the enterprise's existing identity, data, and cloud infrastructure.
 
 ---
 
@@ -112,7 +112,7 @@ The design is built to satisfy the stated evaluation priorities in order of weig
 - Internal vs. external mode toggles tone, disclaimers, and which domains are even reachable (e.g., external users never reach the raw HR or internal financial-guideline index).
 
 ### 4.2 API Gateway & Auth
-- Internal users authenticate via Kohler SSO (SAML/OIDC), carrying role/department claims (HR staff, Finance, Legal, general employee).
+- Internal users authenticate via Enterprise SSO (SAML/OIDC), carrying role/department claims (HR staff, Finance, Legal, general employee).
 - External users authenticate via lightweight OAuth/customer-account login, mapped only to the Customer Support and public-facing Privacy Policy domains.
 - Enforces rate limiting and per-session quotas to protect against abuse and cost overruns.
 
@@ -174,7 +174,7 @@ The design is built to satisfy the stated evaluation priorities in order of weig
 - **Prompt-Injection Defense:** Retrieved document content is treated as untrusted context; the orchestrator strips/ignores embedded instructions found inside retrieved documents.
 - **Audit Trail:** Every query, retrieved source, generated answer, and output file is logged with timestamps and user identity for compliance review (important for Legal/Privacy domains specifically).
 - **Human-in-the-Loop Escalation:** Low-confidence, legally sensitive, or explicitly high-stakes queries (e.g., termination, litigation, data-breach questions) are routed to a human specialist queue rather than answered autonomously.
-- **Data Residency & Encryption:** Encryption in transit and at rest; region-aware storage if Kohler's global operations require jurisdiction-specific data residency (relevant for Privacy domain/GDPR).
+- **Data Residency & Encryption:** Encryption in transit and at rest; region-aware storage if the enterprise's global operations require jurisdiction-specific data residency (relevant for Privacy domain/GDPR).
 
 ---
 
@@ -184,7 +184,7 @@ The design is built to satisfy the stated evaluation priorities in order of weig
 - **Model routing for cost/performance:** A smaller, fast model handles intent classification and routing; a larger, more capable model is reserved for final reasoning and legal/compliance-sensitive answers, optimizing cost without sacrificing quality where it matters most.
 - **Caching:** Frequently asked, non-personalized queries (e.g., "what is the standard PTO policy") are cached at the answer level with TTLs tied to document version, reducing redundant LLM calls.
 - **Asynchronous file generation:** XLSX/large exports are generated asynchronously with a "your file is ready" notification for very large outputs, keeping chat latency low.
-- **Multi-region deployment** supported for Kohler's global footprint, with knowledge bases regionalized where policies differ by geography.
+- **Multi-region deployment** supported for the enterprise's global footprint, with knowledge bases regionalized where policies differ by geography.
 
 ---
 
@@ -203,11 +203,11 @@ The design is built to satisfy the stated evaluation priorities in order of weig
 
 ---
 
-## 9. Business & Sustainability Impact (Alignment with Kohler)
+## 9. Business & Sustainability Impact (Enterprise Alignment)
 
-- **Design excellence:** The dual-mode, channel-flexible interface and clean multi-format output generation reflect Kohler's product-design ethos — the agent itself is a well-crafted "product," not a bolted-on chatbot.
+- **Design excellence:** The dual-mode, channel-flexible interface and clean multi-format output generation reflect the enterprise's product-design ethos — the agent itself is a well-crafted "product," not a bolted-on chatbot.
 - **Operational efficiency:** Deflecting routine HR/Finance/Support questions from human teams reduces ticket backlog and response time, freeing specialists for complex, judgment-heavy work.
-- **Water conservation / sustainability alignment:** The same architecture pattern (domain-scoped RAG + dynamic formatting) can be extended to serve Kohler's sustainability and water-conservation initiatives — e.g., generating on-demand sustainability compliance summaries, water-usage reporting exports (XLSX), or customer-facing product efficiency FAQs — reinforcing brand commitments through the same infrastructure investment.
+- **Water conservation / sustainability alignment:** The same architecture pattern (domain-scoped RAG + dynamic formatting) can be extended to serve the enterprise's sustainability and water-conservation initiatives — e.g., generating on-demand sustainability compliance summaries, water-usage reporting exports (XLSX), or customer-facing product efficiency FAQs — reinforcing brand commitments through the same infrastructure investment.
 - **Reduced resource waste:** Digital-first email drafting and structured exports reduce printed/duplicated documentation and manual reformatting effort across departments.
 
 ---
@@ -225,4 +225,4 @@ The design is built to satisfy the stated evaluation priorities in order of weig
 
 ## 11. Summary
 
-The Kohler Unified Enterprise AI Agent is designed as a **modular, domain-partitioned, multi-agent system** with a clean separation between *understanding/reasoning* and *presentation*. This separation is what enables the core requirement — one conversational agent that can answer deeply domain-specific, compliance-sensitive questions **and** flexibly repackage its answers into whatever format the requester actually needs, without compromising accuracy, security, or auditability.
+The Unified Enterprise AI Agent is designed as a **modular, domain-partitioned, multi-agent system** with a clean separation between *understanding/reasoning* and *presentation*. This separation is what enables the core requirement — one conversational agent that can answer deeply domain-specific, compliance-sensitive questions **and** flexibly repackage its answers into whatever format the requester actually needs, without compromising accuracy, security, or auditability.

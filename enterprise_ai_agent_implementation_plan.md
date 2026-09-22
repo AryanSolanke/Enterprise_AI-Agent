@@ -1,4 +1,4 @@
-# Kohler Unified Enterprise AI Agent — Coding Implementation Plan
+# Unified Enterprise AI Agent — Coding Implementation Plan
 
 This plan translates the system design document into an actionable, dependency-ordered engineering roadmap. It does not contain code — it specifies what to build, in what order, with what tools, and how to verify each piece.
 
@@ -30,7 +30,7 @@ From the design document, the system decomposes into these buildable units:
 - Which vector DB is approved for enterprise use (Pinecone, Weaviate, pgvector, Azure AI Search)?
 - Which LLM provider/model(s) are approved, and are there separate models for classification vs. reasoning vs. legal-sensitive answers?
 - What is the system of record for human escalation (ServiceNow, Zendesk, internal ticketing)?
-- What identity provider does Kohler use for SSO (Azure AD, Okta, etc.)?
+- What identity provider does the enterprise use for SSO (Azure AD, Okta, etc.)?
 - Are there existing source systems/APIs for HRIS, finance policy repo, legal DMS, support CRM, privacy CMS, or will ingestion start from flat file exports?
 
 ---

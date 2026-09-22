@@ -1,5 +1,5 @@
 Metadata-Version: 2.4
-Name: kohler-unified-enterprise-ai-agent
+Name: unified-enterprise-ai-agent
 Version: 0.1.0
 Summary: A secure, domain-partitioned enterprise knowledge agent.
 Requires-Python: >=3.11

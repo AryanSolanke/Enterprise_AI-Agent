@@ -1,10 +1,10 @@
 README.md
 pyproject.toml
-kohler_unified_enterprise_ai_agent.egg-info/PKG-INFO
-kohler_unified_enterprise_ai_agent.egg-info/SOURCES.txt
-kohler_unified_enterprise_ai_agent.egg-info/dependency_links.txt
-kohler_unified_enterprise_ai_agent.egg-info/requires.txt
-kohler_unified_enterprise_ai_agent.egg-info/top_level.txt
+unified_enterprise_ai_agent.egg-info/PKG-INFO
+unified_enterprise_ai_agent.egg-info/SOURCES.txt
+unified_enterprise_ai_agent.egg-info/dependency_links.txt
+unified_enterprise_ai_agent.egg-info/requires.txt
+unified_enterprise_ai_agent.egg-info/top_level.txt
 services/__init__.py
 services/domain_agents/__init__.py
 services/domain_agents/service.py

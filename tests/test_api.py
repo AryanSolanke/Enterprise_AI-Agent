@@ -12,7 +12,7 @@ def make_client(tmp_path: Path) -> TestClient:
     app = create_app(
         Settings(
             app_env="test",
-            database_url=f"sqlite:///{tmp_path / 'kuea.db'}",
+            database_url=f"sqlite:///{tmp_path / 'ueaa.db'}",
             artifact_dir=tmp_path / "artifacts",
             session_token_secret="test-secret",
             oidc_issuer_url=None,

@@ -84,7 +84,7 @@ function App() {
   }
 
   return <main>
-    <header><span className="mark">K</span><div><h1>Kohler Enterprise AI Agent</h1><p>Grounded answers across approved knowledge domains.</p></div></header>
+    <header><span className="mark">E</span><div><h1>Enterprise AI Agent</h1><p>Grounded answers across approved knowledge domains.</p></div></header>
     <section className="notice">Demo mode has been granted access to all domains for testing purposes. Review AI-drafted outputs before use.</section>
     
     <details className="upload-section">
@@ -108,7 +108,7 @@ function App() {
 
     <section className="thread" aria-live="polite">
       {messages.length === 0 && <p className="empty">Ask about a warranty, customer support, or privacy request.</p>}
-      {messages.map((item, index) => <article key={index} className={item.role}><strong>{item.role === 'user' ? 'You' : 'KUEA'}</strong><pre>{item.text}</pre>{item.artifact && <a href={`${apiUrl}${item.artifact.download_url}`} target="_blank">Download {item.artifact.filename}</a>}</article>)}
+      {messages.map((item, index) => <article key={index} className={item.role}><strong>{item.role === 'user' ? 'You' : 'UEAA'}</strong><pre>{item.text}</pre>{item.artifact && <a href={`${apiUrl}${item.artifact.download_url}`} target="_blank">Download {item.artifact.filename}</a>}</article>)}
     </section>
     <form onSubmit={send}>
       <label>Reply format <select value={format} onChange={(event) => setFormat(event.target.value as Format)}><option value="chat">Chat</option><option value="json">JSON</option><option value="xml">XML</option><option value="xlsx">Excel workbook</option><option value="email">Email draft</option></select></label>
